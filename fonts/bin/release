@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+cat <<EOF
+config_vars:
+  FONTCONFIG_PATH: "\$HOME/.fonts"
+EOF
