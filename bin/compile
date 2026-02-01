@@ -1,7 +1,15 @@
 #!/usr/bin/env bash
 set -e
-BUILD_DIR=$1
-FONT_DIR="$BUILD_DIR/.fonts"
-mkdir -p "$FONT_DIR"
-cp -v "$BUILD_DIR/fonts/"*.ttf "$FONT_DIR/" || true
-cp -v "$BUILD_DIR/fonts/"*.ttc "$FONT_DIR/" || true
+
+BUILD_DIR="$1"
+BP_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+
+echo "Installing fonts from buildpack…"
+
+FONT_TARGET="$BUILD_DIR/.fonts"
+mkdir -p "$FONT_TARGET"
+
+cp -v "$BP_DIR/fonts/"*.ttf "$FONT_TARGET/" || true
+cp -v "$BP_DIR/fonts/"*.ttc "$FONT_TARGET/" || true
+
+echo "Fonts installed into $FONT_TARGET"
